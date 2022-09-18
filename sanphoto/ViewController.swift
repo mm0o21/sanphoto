@@ -56,16 +56,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //mapにピンを表示
         mapView.addAnnotation(pin)
         
-        let viewController = EditViewController()
-        if let sheet = viewController.sheetPresentationController{
-            sheet.detents = [.medium(), .large()]
-            sheet.preferredCornerRadius = 10.0
-        }
-        present(viewController, animated: true)
         
     }
     
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let next = segue.destination
+        if let sheet = next.sheetPresentationController{
+            sheet.detents = [.medium(), .large()]
+        }
+    }
+    
     //許可を求める
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
