@@ -21,18 +21,18 @@ class EditViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         //日付のやつ関連
-//        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
-//        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-//        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-//        toolbar.setItems([spacelItem, doneItem], animated: true)
-//
-//        datePicker.datePickerMode = .date
-//        datePicker.preferredDatePickerStyle = .wheels
-//
-//        dateField.inputView = datePicker
-//        dateField.inputAccessoryView = toolbar
-//
-//        dateField.delegate = self
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+
+        dateField.inputView = datePicker
+        dateField.inputAccessoryView = toolbar
+
+        dateField.delegate = self
     }
     
     //日付のdoneボタン
