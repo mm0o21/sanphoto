@@ -29,7 +29,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="map1"/>
                                 <connections>
                                     <action selector="addPin" destination="uO5-7y-you" eventType="touchUpInside" id="iAI-Yc-WXz"/>
-                                    <segue destination="u8A-qg-lK0" kind="presentation" id="Eyt-06-lK6"/>
+                                    <segue destination="u8A-qg-lK0" kind="presentation" identifier="next" id="hYr-3L-i6k"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -51,13 +51,13 @@
         <!--Edit View Controller-->
         <scene sceneID="6PT-JR-cVd">
             <objects>
-                <viewController id="u8A-qg-lK0" customClass="EditViewController" customModule="sanphoto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="modal" id="u8A-qg-lK0" customClass="EditViewController" customModule="sanphoto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sv0-cU-qe8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kee-PA-lSV">
-                                <rect key="frame" x="31" y="84" width="352" height="56"/>
+                                <rect key="frame" x="36" y="48" width="342" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.87843137979999997" green="0.79607844350000001" blue="0.79215681550000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -65,28 +65,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="わんこを選択" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbz-fZ-tgE">
-                                <rect key="frame" x="31" y="196" width="183" height="38"/>
+                                <rect key="frame" x="36" y="166" width="183" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="999-jf-dHj">
-                                <rect key="frame" x="212" y="181" width="68" height="66"/>
+                                <rect key="frame" x="217" y="151" width="68" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DC0-lg-e0R">
-                                <rect key="frame" x="305" y="181" width="68" height="66"/>
+                                <rect key="frame" x="310" y="151" width="68" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ey-lV-eMf">
-                                <rect key="frame" x="31" y="397" width="352" height="74"/>
+                                <rect key="frame" x="36" y="337" width="342" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.54847416269468519" blue="0.5391114010375232" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -96,7 +96,7 @@
                                 </buttonConfiguration>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5e-VT-wgp">
-                                <rect key="frame" x="31" y="319" width="352" height="34"/>
+                                <rect key="frame" x="36" y="263" width="342" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -115,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kev-rx-ED6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493" y="-96"/>
+            <point key="canvasLocation" x="492.75362318840581" y="-96.428571428571431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sDk-t7-9wu">
