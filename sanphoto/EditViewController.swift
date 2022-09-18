@@ -33,6 +33,12 @@ class EditViewController: UIViewController, UITextFieldDelegate {
         dateField.inputAccessoryView = toolbar
 
         dateField.delegate = self
+        
+        adrLabel.layer.cornerRadius = 10
+        adrLabel.clipsToBounds = true
+        dog1Button.layer.cornerRadius = 10
+        dog2Button.layer.cornerRadius = 10
+        updateButton.layer.cornerRadius = 10
     }
     
     //日付のdoneボタン
