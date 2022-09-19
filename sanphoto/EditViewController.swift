@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class EditViewController: UIViewController, UITextFieldDelegate {
 
@@ -16,7 +17,9 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var updateButton: UIButton!
     var datePicker = UIDatePicker()
     
-    var flg = false
+    
+    
+
     
     
     override func viewDidLoad() {
@@ -41,15 +44,11 @@ class EditViewController: UIViewController, UITextFieldDelegate {
         dog1Button.layer.cornerRadius = 10
         dog2Button.layer.cornerRadius = 10
         updateButton.layer.cornerRadius = 10
+        
+       // adrLabel.text = 
     }
     
     @IBAction func tapDog1(){
-        
-//        if flg{
-//            dog1Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
-//        }else{
-//            dog1Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
-//        }
         
         dog1Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
         dog2Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
