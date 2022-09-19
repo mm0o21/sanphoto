@@ -77,6 +77,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="dog1"/>
+                                <connections>
+                                    <action selector="tapDog1" destination="u8A-qg-lK0" eventType="touchUpInside" id="vvf-qT-AM6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DC0-lg-e0R">
                                 <rect key="frame" x="310" y="151" width="68" height="66"/>
@@ -84,6 +87,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="dog2"/>
+                                <connections>
+                                    <action selector="tapDog2" destination="u8A-qg-lK0" eventType="touchUpInside" id="c3e-ez-sBW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ey-lV-eMf">
                                 <rect key="frame" x="36" y="337" width="342" height="74"/>
