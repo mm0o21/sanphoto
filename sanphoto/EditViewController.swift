@@ -16,6 +16,8 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var updateButton: UIButton!
     var datePicker = UIDatePicker()
     
+    var flg = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,22 @@ class EditViewController: UIViewController, UITextFieldDelegate {
         updateButton.layer.cornerRadius = 10
     }
     
+    @IBAction func tapDog1(){
+        
+//        if flg{
+//            dog1Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
+//        }else{
+//            dog1Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
+//        }
+        
+        dog1Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
+        dog2Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
+    }
+    
+    @IBAction func tapDog2(){
+        dog1Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
+        dog2Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
+    }
     //日付のdoneボタン
     @objc func done() {
         let formatter = DateFormatter()
@@ -48,6 +66,4 @@ class EditViewController: UIViewController, UITextFieldDelegate {
         dateField.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
-    
-        
 }

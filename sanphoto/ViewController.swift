@@ -19,6 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet var mapView: MKMapView!
     var locationManager: CLLocationManager!
     @IBOutlet var mapButton: UIButton!
+    
    // var mapImages = [UIImage?] = [UIImage(named: "map-red"), UIImage(named: "map-pink""), UIImage(named: "map-orangek"), UIImage(named: "map-yellow"), UIImage(named: "map-green"), UIImage(named: "map-lightblue"), UIImage(named: "map-blue"), UIImage(named: "map-gray"), UIImage(named: "map1")]
     
     
@@ -33,13 +34,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         // 0.01が距離の倍率
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        
-//      //白金高輪バージョン
-//        // 表示する中心の緯度、経度を指定
-//        let coordinate = CLLocationCoordinate2D(latitude: 35.6431, longitude: 139.7342)
 
-        
-    //現在地でやりたいバージョン
         // 表示する中心の緯度、経度を指定
         let coordinate = mapView.userLocation.coordinate
 
@@ -47,8 +42,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapView.region = region
         mapView.userTrackingMode = .follow
-       mapButton.layer.cornerRadius = 10
-       mapView.delegate = self
+        mapButton.layer.cornerRadius = 10
+        mapView.delegate = self
     }
     
 
@@ -64,7 +59,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //mapにピンを表示
         mapView.addAnnotation(pin)
         
-        
     }
     
 
@@ -74,6 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             sheet.detents = [.medium(), .large()]
         }
     }
+    
     
     //許可を求める
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
