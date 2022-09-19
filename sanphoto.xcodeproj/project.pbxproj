@@ -14,6 +14,7 @@
 		D1798ECC28D0587500D898B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1798ECB28D0587500D898B2 /* Assets.xcassets */; };
 		D1798ECF28D0587500D898B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1798ECD28D0587500D898B2 /* LaunchScreen.storyboard */; };
 		D193E81128D335BE00F23994 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D193E81028D335BE00F23994 /* EditViewController.swift */; };
+		D1A8C1F328D82D4C005C83EE /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A8C1F228D82D4C005C83EE /* UIColorHex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		D1798ECE28D0587500D898B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1798ED028D0587500D898B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D193E81028D335BE00F23994 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		D1A8C1F228D82D4C005C83EE /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				D1798EC428D0587400D898B2 /* SceneDelegate.swift */,
 				D1798EC628D0587400D898B2 /* ViewController.swift */,
 				D193E81028D335BE00F23994 /* EditViewController.swift */,
+				D1A8C1F228D82D4C005C83EE /* UIColorHex.swift */,
 				D1798EC828D0587400D898B2 /* Main.storyboard */,
 				D1798ECB28D0587500D898B2 /* Assets.xcassets */,
 				D1798ECD28D0587500D898B2 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			files = (
 				D193E81128D335BE00F23994 /* EditViewController.swift in Sources */,
 				D1798EC728D0587400D898B2 /* ViewController.swift in Sources */,
+				D1A8C1F328D82D4C005C83EE /* UIColorHex.swift in Sources */,
 				D1798EC328D0587400D898B2 /* AppDelegate.swift in Sources */,
 				D1798EC528D0587400D898B2 /* SceneDelegate.swift in Sources */,
 			);
