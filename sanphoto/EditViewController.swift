@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import RealmSwift
 
 class EditViewController: UIViewController, UITextFieldDelegate {
 
@@ -16,10 +17,8 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var dateField: UITextField!
     @IBOutlet var updateButton: UIButton!
     var datePicker = UIDatePicker()
+    let realm = try! Realm()
     
-    
-    
-
     
     
     override func viewDidLoad() {

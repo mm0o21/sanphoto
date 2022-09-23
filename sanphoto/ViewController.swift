@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import RealmSwift
 
 //ピンを継承したクラス
 class mapAnnotationSetting: MKPointAnnotation{
@@ -19,9 +20,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet var mapView: MKMapView!
     var locationManager: CLLocationManager!
     @IBOutlet var mapButton: UIButton!
-
-    
-   // var mapImages = [UIImage?] = [UIImage(named: "map-red"), UIImage(named: "map-pink""), UIImage(named: "map-orangek"), UIImage(named: "map-yellow"), UIImage(named: "map-green"), UIImage(named: "map-lightblue"), UIImage(named: "map-blue"), UIImage(named: "map-gray"), UIImage(named: "map1")]
+    let realm = try! Realm()
     
     //座標の配列
     var coordinatesArray = [
@@ -35,6 +34,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //realmstudioみたい
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         //locationManagerのセットアップ
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -57,7 +58,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
 
-    @IBAction func addPin(){
+    @IBAction func addPin(_ sender: UITapGestureRecognizer){
+        
+        if(sender.state != UIGestureRecognizer.State.began){
+               return
+           }
 
         //現在地
         let coordinate = mapView.userLocation.coordinate
@@ -74,6 +79,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         print(coordinatesArray)
         makeMap()
+        
+        let location:CGPoint = sender.location(in: mapView)
+        let center = mapView.convert(location, toCoordinateFrom: mapView)
+        let lati:String = center.latitude.description
+        let long:String = center.longitude.description
+        
+        savePin(latitude: lati, longitude: long)
     }
     
 
@@ -167,6 +179,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             return routeRenderer
         }
     
+    
+    func savePin(latitude: String, longitude: String){
+        let pin = Pin()
+        pin.latitude = latitude
+        pin.longitude = longitude
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(pin)
+        }
+    }
+    
+ 
 
 }
 

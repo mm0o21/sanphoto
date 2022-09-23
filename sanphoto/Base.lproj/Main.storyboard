@@ -28,7 +28,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="map1"/>
                                 <connections>
-                                    <action selector="addPin" destination="uO5-7y-you" eventType="touchUpInside" id="iAI-Yc-WXz"/>
+                                    <action selector="addPin:" destination="uO5-7y-you" eventType="touchUpInside" id="VG6-52-rDD"/>
                                     <segue destination="u8A-qg-lK0" kind="presentation" identifier="next" id="hYr-3L-i6k"/>
                                 </connections>
                             </button>
