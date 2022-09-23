@@ -57,7 +57,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         makeMap()
     }
     
-
     @IBAction func addPin(_ sender: UITapGestureRecognizer){
         
         if(sender.state != UIGestureRecognizer.State.began){
@@ -87,6 +86,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         savePin(latitude: lati, longitude: long)
     }
+   
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

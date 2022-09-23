@@ -28,7 +28,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="map1"/>
                                 <connections>
-                                    <action selector="addPin:" destination="uO5-7y-you" eventType="touchUpInside" id="VG6-52-rDD"/>
+                                    <action selector="addPin:" destination="uO5-7y-you" eventType="touchUpInside" id="0I8-IH-oqK"/>
                                     <segue destination="u8A-qg-lK0" kind="presentation" identifier="next" id="hYr-3L-i6k"/>
                                 </connections>
                             </button>
@@ -40,7 +40,7 @@
                         <barButtonItem key="leftBarButtonItem" image="settei-64" id="XCf-6r-18l"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapButton" destination="u32-8N-Tbr" id="let-Nd-h6Y"/>
+                        <outlet property="mapButton" destination="u32-8N-Tbr" id="01d-Ld-6bI"/>
                         <outlet property="mapView" destination="ZNO-6f-xLW" id="iBF-zl-DkC"/>
                     </connections>
                 </viewController>
