@@ -15,6 +15,9 @@
 		D1798ECF28D0587500D898B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1798ECD28D0587500D898B2 /* LaunchScreen.storyboard */; };
 		D193E81128D335BE00F23994 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D193E81028D335BE00F23994 /* EditViewController.swift */; };
 		D1A8C1F328D82D4C005C83EE /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A8C1F228D82D4C005C83EE /* UIColorHex.swift */; };
+		D1A8C1F528D84CCD005C83EE /* DogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A8C1F428D84CCD005C83EE /* DogItem.swift */; };
+		D1A8C1F828D84DAC005C83EE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D1A8C1F728D84DAC005C83EE /* Realm */; };
+		D1A8C1FA28D84DAC005C83EE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D1A8C1F928D84DAC005C83EE /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,7 @@
 		D1798ED028D0587500D898B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D193E81028D335BE00F23994 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		D1A8C1F228D82D4C005C83EE /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
+		D1A8C1F428D84CCD005C83EE /* DogItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1A8C1FA28D84DAC005C83EE /* RealmSwift in Frameworks */,
+				D1A8C1F828D84DAC005C83EE /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +70,7 @@
 				D1798EC428D0587400D898B2 /* SceneDelegate.swift */,
 				D1798EC628D0587400D898B2 /* ViewController.swift */,
 				D193E81028D335BE00F23994 /* EditViewController.swift */,
+				D1A8C1F428D84CCD005C83EE /* DogItem.swift */,
 				D1A8C1F228D82D4C005C83EE /* UIColorHex.swift */,
 				D1798EC828D0587400D898B2 /* Main.storyboard */,
 				D1798ECB28D0587500D898B2 /* Assets.xcassets */,
@@ -89,6 +96,10 @@
 			dependencies = (
 			);
 			name = sanphoto;
+			packageProductDependencies = (
+				D1A8C1F728D84DAC005C83EE /* Realm */,
+				D1A8C1F928D84DAC005C83EE /* RealmSwift */,
+			);
 			productName = sanphoto;
 			productReference = D1798EBF28D0587400D898B2 /* sanphoto.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +128,9 @@
 				Base,
 			);
 			mainGroup = D1798EB628D0587400D898B2;
+			packageReferences = (
+				D1A8C1F628D84DAC005C83EE /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = D1798EC028D0587400D898B2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -149,6 +163,7 @@
 				D1A8C1F328D82D4C005C83EE /* UIColorHex.swift in Sources */,
 				D1798EC328D0587400D898B2 /* AppDelegate.swift in Sources */,
 				D1798EC528D0587400D898B2 /* SceneDelegate.swift in Sources */,
+				D1A8C1F528D84CCD005C83EE /* DogItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +381,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D1A8C1F628D84DAC005C83EE /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D1A8C1F728D84DAC005C83EE /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1A8C1F628D84DAC005C83EE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		D1A8C1F928D84DAC005C83EE /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1A8C1F628D84DAC005C83EE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D1798EB728D0587400D898B2 /* Project object */;
 }
