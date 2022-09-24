@@ -28,7 +28,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="map1"/>
                                 <connections>
-                                    <action selector="addPin:" destination="uO5-7y-you" eventType="touchUpInside" id="0I8-IH-oqK"/>
+                                    <action selector="addPin:" destination="uO5-7y-you" eventType="touchUpInside" id="44G-0N-M02"/>
                                 </connections>
                             </button>
                         </subviews>
