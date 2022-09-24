@@ -34,8 +34,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //realmstudioみたい
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
         //locationManagerのセットアップ
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -57,12 +55,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         makeMap()
     }
     
-    @IBAction func addPin(_ sender: UITapGestureRecognizer){
+    @IBAction func addPin(_ sender: UIButton){
         
-        if(sender.state != UIGestureRecognizer.State.began){
-               return
-           }
-
         //現在地
         let coordinate = mapView.userLocation.coordinate
             //ピンを生成
@@ -76,16 +70,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         coordinatesArray.append(["name":"ピン", "lat": mapView.userLocation.coordinate.latitude, "lon": mapView.userLocation.coordinate.longitude])
         
-        print(coordinatesArray)
+        //print(coordinatesArray)
         makeMap()
         
-        let location:CGPoint = sender.location(in: mapView)
+        let location:CGPoint = CGPoint(x: self.mapView.frame.width / 2, y: self.mapView.frame.height / 2)
         let center = mapView.convert(location, toCoordinateFrom: mapView)
         let lati:String = center.latitude.description
         let long:String = center.longitude.description
         
         savePin(latitude: lati, longitude: long)
         self.performSegue(withIdentifier: "next", sender: nil)
+        
+        //realmstudioみたい
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
    
     
@@ -123,7 +120,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        <#code#>
 //    }
-//    
+    
     //経由地点つなげるやつ
     func makeMap() {
         //マップの表示域を設定
@@ -176,6 +173,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 }
             }
 
+    //つなげるやつの詳細設定
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             let route: MKPolyline = overlay as! MKPolyline
             let routeRenderer = MKPolylineRenderer(polyline: route)
@@ -184,7 +182,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             return routeRenderer
         }
     
-    
+    //ピンをRealmに保存
     func savePin(latitude: String, longitude: String){
         let pin = Pin()
         pin.latitude = latitude
@@ -195,7 +193,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             realm.add(pin)
         }
     }
+
+
+    //Realmからピンの位置情報を取得
+    func getAllPins() -> [Pin] {
+       let realm = try! Realm()
+       var results: [Pin] = []
+    //Pinテーブルに存在する全てのデータを取得
+       for pin in realm.objects(Pin.self) {
+           results.append(pin)
+       }
+       return results
+    }
     
+    //座標をAnnotationに変換する
+    func getAnnotations() -> [MKPointAnnotation]  {
+       let pins = getAllPins()
+       var results:[MKPointAnnotation] = []
+       
+       pins.forEach { pin in
+           let annotation = MKPointAnnotation()
+           let centerCoordinate = CLLocationCoordinate2D(latitude: (pin.latitude as NSString).doubleValue, longitude:(pin.longitude as NSString).doubleValue)
+           annotation.coordinate = centerCoordinate
+           results.append(annotation)
+       }
+       return results
+    }
+    
+    // マップのロードが終わった時に呼ばれる
+    // Map上にAnnotationを追加
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+       // TODO: Pinを取得してMap上に表示する
+       let annotations = getAnnotations()
+       annotations.forEach { annotation in
+           mapView.addAnnotation(annotation)
+       }
+    }
  
 
 }
