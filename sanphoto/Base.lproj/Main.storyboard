@@ -29,7 +29,6 @@
                                 <buttonConfiguration key="configuration" style="plain" image="map1"/>
                                 <connections>
                                     <action selector="addPin:" destination="uO5-7y-you" eventType="touchUpInside" id="0I8-IH-oqK"/>
-                                    <segue destination="u8A-qg-lK0" kind="presentation" identifier="next" id="hYr-3L-i6k"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -42,6 +41,7 @@
                     <connections>
                         <outlet property="mapButton" destination="u32-8N-Tbr" id="01d-Ld-6bI"/>
                         <outlet property="mapView" destination="ZNO-6f-xLW" id="iBF-zl-DkC"/>
+                        <segue destination="u8A-qg-lK0" kind="presentation" identifier="next" id="dmW-p7-qCc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVv-qI-5VJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
