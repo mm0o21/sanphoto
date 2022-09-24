@@ -85,6 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let long:String = center.longitude.description
         
         savePin(latitude: lati, longitude: long)
+        self.performSegue(withIdentifier: "next", sender: nil)
     }
    
     
@@ -118,7 +119,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                print("lat: \(lat), lon: \(lon)")
            }
     }
-    
+    //新しいロケーションデータが取得されたときに実行
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        <#code#>
+//    }
+//    
     //経由地点つなげるやつ
     func makeMap() {
         //マップの表示域を設定
