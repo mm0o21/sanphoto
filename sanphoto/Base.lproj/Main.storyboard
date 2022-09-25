@@ -100,6 +100,9 @@
                                 <buttonConfiguration key="configuration" style="gray" title="ピンを更新">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="22"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="update" destination="u8A-qg-lK0" eventType="touchUpInside" id="os9-xk-FIv"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5e-VT-wgp">
                                 <rect key="frame" x="36" y="263" width="342" height="34"/>
