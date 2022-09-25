@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet var mapButton: UIButton!
     let realm = try! Realm()
     
+    
     //座標の配列
     var coordinatesArray = [
         ["name":"東京駅",    "lat":35.68124,  "lon": 139.76672],
@@ -116,10 +117,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                print("lat: \(lat), lon: \(lon)")
            }
     }
-    //新しいロケーションデータが取得されたときに実行
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        <#code#>
-//    }
+
     
     //経由地点つなげるやつ
     func makeMap() {
@@ -229,8 +227,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
            mapView.addAnnotation(annotation)
        }
     }
- 
-
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if let annotation = view.annotation{
+                print(annotation.title!!)
+            }
+        }
+    
 }
-
-
