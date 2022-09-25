@@ -170,6 +170,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     }
                 }
             }
+    
 
     //つなげるやつの詳細設定
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -228,9 +229,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
        }
     }
     
+    //ピンがタップされた時の処理
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
             if let annotation = view.annotation{
-                print(annotation.title!!)
+                self.performSegue(withIdentifier: "next", sender: nil)
             }
         }
     
