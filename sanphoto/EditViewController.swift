@@ -77,15 +77,15 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     
     @IBAction func update(){
         //let coordinate =
-        let location = CLLocation(latitude: 34.7024854, longitude: 135.4937619)
+        //let location = CLLocation(latitude://ピンの緯度, longitude://ピンの経度)
         
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
                     guard
                         let placemark = placemarks?.first, error == nil,
-                        let administrativeArea = placemark.administrativeArea, // 都道府県
-                        let locality = placemark.locality, // 市区町村
-                        let thoroughfare = placemark.thoroughfare, // 地名(丁目)
-                        let subThoroughfare = placemark.subThoroughfare // 番地
+                        let administrativeArea = placemark.administrativeArea, //都道府県
+                        let locality = placemark.locality, //市区町村
+                        let thoroughfare = placemark.thoroughfare, //丁目
+                        let subThoroughfare = placemark.subThoroughfare //番地
                             
                         else {
                             self.adrLabel.text = "---"
