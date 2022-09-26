@@ -21,6 +21,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var locationManager: CLLocationManager!
     @IBOutlet var mapButton: UIButton!
     let realm = try! Realm()
+    @IBOutlet var adrLabel : UILabel!
     
     
     //座標の配列
@@ -84,6 +85,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         //realmstudioみたい
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        let coordinates = mapView.userLocation.coordinate
+        let locations = CLLocation(latitude:coordinates.latitude, longitude: coordinates.longitude)
+        
+        CLGeocoder().reverseGeocodeLocation(locations) { placemarks, error in
+                    guard
+                        let placemark = placemarks?.first, error == nil,
+                        let administrativeArea = placemark.administrativeArea, //都道府県
+                        let locality = placemark.locality, //市区町村
+                        let thoroughfare = placemark.thoroughfare, //丁目
+                        let subThoroughfare = placemark.subThoroughfare //番地
+
+                        else {
+                        self.adrLabel.text = "---"
+                            return
+                    }
+
+                    self.adrLabel.text = """
+                        \(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)
+                    """
+                }
     }
    
     
