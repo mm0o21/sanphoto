@@ -76,7 +76,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="dog1"/>
+                                <buttonConfiguration key="configuration" style="plain" image="pug-gray-128"/>
                                 <connections>
                                     <action selector="tapDog1" destination="u8A-qg-lK0" eventType="touchUpInside" id="vvf-qT-AM6"/>
                                 </connections>
@@ -86,7 +86,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="dog2"/>
+                                <buttonConfiguration key="configuration" style="plain" image="golden-gray-128"/>
                                 <connections>
                                     <action selector="tapDog2" destination="u8A-qg-lK0" eventType="touchUpInside" id="c3e-ez-sBW"/>
                                 </connections>
@@ -147,9 +147,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dog1" width="42.666667938232422" height="42.666667938232422"/>
-        <image name="dog2" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="golden-gray-128" width="42.666667938232422" height="42.666667938232422"/>
         <image name="map1" width="32" height="32"/>
+        <image name="pug-gray-128" width="42.666667938232422" height="42.666667938232422"/>
         <image name="settei-64" width="21.333333969116211" height="21.333333969116211"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
