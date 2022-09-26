@@ -116,6 +116,8 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
                     print("画像の保存に失敗しました")
                 }
                 try! realm.write{realm.add(table)}
+        
+        saveImage()
     }
     
     //保存するためのパスを作成する
@@ -131,13 +133,13 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         }
     }
     
-    //画像を保存する関数の部分
+    //画像を保存
     func saveImage() {
         createLocalDataFile()
-        //pngで保存する場合
-        let pngImageData = dog1Button.image(for: .normal)
+        //保存
+        let ImageData = dog1Button.image(for: .normal)
         do {
-            try pngImageData?.write(to: documentDirectoryFileURL)
+            try ImageData?.write(to: documentDirectoryFileURL)
         } catch {
             //エラー処理
             print("エラー")
