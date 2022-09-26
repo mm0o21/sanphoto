@@ -16,6 +16,8 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     @IBOutlet var dog2Button: UIButton!
     @IBOutlet var dateField: UITextField!
     @IBOutlet var updateButton: UIButton!
+//    let imageView1 = UIImageView?(<#UIImageView#>)
+//    let imageView2 = UIImageView?(<#UIImageView#>)
     let dog1 = UIImage(named: "dog1")!
     let dog2 = UIImage(named: "dog2")!
     var datePicker = UIDatePicker()
@@ -29,7 +31,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
        
     
-    let locationManager = CLLocationManager()
+       let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
@@ -71,7 +73,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     
     
     @IBAction func tapDog2(){
-        dog1Button.setImage(dog2, for: .normal)
+        dog2Button.setImage(dog2, for: .normal)
         dog1Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
         dog2Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
     }
@@ -87,26 +89,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     
     
     @IBAction func update(){
-        //let coordinate =
-        //let location = CLLocation(latitude://ピンの緯度, longitude://ピンの経度)
-        
-//        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-//                    guard
-//                        let placemark = placemarks?.first, error == nil,
-//                        let administrativeArea = placemark.administrativeArea, //都道府県
-//                        let locality = placemark.locality, //市区町村
-//                        let thoroughfare = placemark.thoroughfare, //丁目
-//                        let subThoroughfare = placemark.subThoroughfare //番地
-//
-//                        else {
-//                            self.adrLabel.text = "---"
-//                            return
-//                    }
-//
-//                    self.adrLabel.text = """
-//                        \(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)
-//                    """
-//                }
+
         
         //Realmのテーブルをインスタンス化
                 let table = Pin()
@@ -117,7 +100,6 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
                 }
                 try! realm.write{realm.add(table)}
         
-        saveImage()
     }
     
     //保存するためのパスを作成する
@@ -139,13 +121,33 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         //保存
         let ImageData = dog1Button.image(for: .normal)
         do {
-            try ImageData?.write(to: documentDirectoryFileURL)
+            try ImageData?.saveToDocuments(filename: filePath)
         } catch {
             //エラー処理
             print("エラー")
         }
     }
 
+}
+
+extension UIImage {
+    func saveToDocuments(filename:String){
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentsDirectory.appendingPathComponent(filename)
+        if let data = self.jpegData(compressionQuality: 1.0) {
+            do {
+                try data.write(to: fileURL)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    static func getFromDocuments(filename: String) -> UIImage {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let data = try! Data(contentsOf: documentsDirectory.appendingPathComponent(filename))
+        let image = UIImage(data: data)
+        return image!
+    }
 }
     
 
