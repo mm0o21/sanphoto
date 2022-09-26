@@ -22,7 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet var mapButton: UIButton!
     let realm = try! Realm()
     @IBOutlet var adrLabel : UILabel!
-    
+    var adr: String!
     
     //座標の配列
     var coordinatesArray = [
@@ -36,6 +36,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        adr = adrLabel.text
+        
         //locationManagerのセットアップ
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -105,6 +108,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     self.adrLabel.text = """
                         \(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)
                     """
+                }
+        
+            //Realmを初期化
+                let realm = try! Realm()
+            //保存する要素
+                let pins = Pin()
+                pins.address = adr
+            //Realmに書き込み
+                try! realm.write {
+                    realm.add(pins, update:.modified)
                 }
     }
    

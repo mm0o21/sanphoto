@@ -21,6 +21,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     let dog1 = UIImage(named: "dog1")!
     let dog2 = UIImage(named: "dog2")!
     var datePicker = UIDatePicker()
+    var adr: String!
     
     let realm = try! Realm()
     
@@ -36,6 +37,8 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         //日付のやつ関連
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
@@ -61,7 +64,6 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
-        // adrLabel.text =
     }
     
     
@@ -127,6 +129,24 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
             print("エラー")
         }
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+
+            adrLabel.text = adr
+
+            DispatchQueue(label: "background").async {
+                let realm = try! Realm()
+
+                if realm.objects(Pin.self).last != nil {
+                    DispatchQueue.main.async {
+                        self.adrLabel.text = self.adr
+                    }
+                }
+            }
+
+        }
 
 }
 
@@ -148,6 +168,7 @@ extension UIImage {
         let image = UIImage(data: data)
         return image!
     }
+
 }
     
 

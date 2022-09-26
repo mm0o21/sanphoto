@@ -13,7 +13,12 @@ class Pin: Object {
     @objc dynamic var latitude = ""
     //経度
     @objc dynamic var longitude = ""
-    
+    //犬の画像
     @objc dynamic var imageURL = ""
+    //住所
+    @objc dynamic var address = ""
     
+    override static func primaryKey() -> String? {
+        return "address"
+    }
 }
