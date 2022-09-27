@@ -26,10 +26,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //座標の配列
     var coordinatesArray = [
-        ["name":"東京駅",    "lat":35.68124,  "lon": 139.76672],
-        ["name":"皇居外苑",   "lat":35.68026,  "lon": 139.75801],
-        ["name":"国立劇場",   "lat":35.6818,   "lon": 139.74326],
-        ["name":"九段下駅",   "lat":35.69555,  "lon": 139.75074]
+        ["name":"東京駅",    "lat":35.68124,  "lon": 139.76672]
     ]
     
 
