@@ -63,7 +63,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     
     
     @IBAction func tapDog1(){
-        dog1Button.setImage(dog1, for: .normal)
+        //dog1Button.setImage(dog1, for: .normal)
         dog1Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
         dog2Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
     }
@@ -100,11 +100,16 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
 
         //Realmからの呼び込み
         //1.Realmから保存した画像のファイル名をとってくる
-        //ここは自分で頑張ってみて！変数```newfilename```を新しくつくってそこに保存しよう！
+        //変数```newfilename```を新しくつくってそこに保存
+        let newfilename = realm.objects(Pin.self).value(forKey: "image")
+        //
+        try! realm.write {
+                realm.add(newfilename, update:.modified)
+        }
 
         //2.documentDirectoryから画像を読み込む
-        //let newImage = UIImage.getFromDocuments(filename: newfilename)
-        //imageView.image = newImage
+        let newImage = UIImage.getFromDocuments(filename: newfilename)
+        imageView.image = newImage
 
         
         self.dismiss(animated: true)
