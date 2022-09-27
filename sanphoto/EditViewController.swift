@@ -16,7 +16,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     @IBOutlet var dog2Button: UIButton!
     @IBOutlet var dateField: UITextField!
     @IBOutlet var updateButton: UIButton!
-    let imageView = UIImageView?(<#UIImageView#>)
+    //let imageView = UIImageView?(<#UIImageView#>)
 //    let imageView2 = UIImageView?(<#UIImageView#>)
     let dog1 = UIImage(named: "dog1")!
     let dog2 = UIImage(named: "dog2")!
@@ -110,12 +110,6 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         self.dismiss(animated: true)
         
     }
-    
-
-        
-
-    
-
 
     //realm呼び出してる
     override func viewWillAppear(_ animated: Bool) {
