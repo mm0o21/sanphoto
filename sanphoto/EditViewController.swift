@@ -16,7 +16,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     @IBOutlet var dog2Button: UIButton!
     @IBOutlet var dateField: UITextField!
     @IBOutlet var updateButton: UIButton!
-//    let imageView1 = UIImageView?(<#UIImageView#>)
+    let imageView = UIImageView?(<#UIImageView#>)
 //    let imageView2 = UIImageView?(<#UIImageView#>)
     let dog1 = UIImage(named: "dog1")!
     let dog2 = UIImage(named: "dog2")!
@@ -86,41 +86,38 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     
     
     @IBAction func update(){
+        //Realmに保存
+        //1.realmに保存する画像を用意
+        let image = UIImage(named: "dog1")!
+        //2.画像のファイル名を生成
+        let filename = UUID.init().uuidString + ".jpg"
+        //3.画像をdocumentDirectoryに保存
+        image.saveToDocuments(filename: filename)
         
-        createLocalDataFile()
-        
-        //Realmのテーブルをインスタンス化
-        let table = Pin()
-        do{
-            try table.imageURL = documentDirectoryFileURL.absoluteString
-        }catch{
-            print("画像の保存に失敗しました")
-        }
-        try! realm.write{realm.add(table)}
+        //4.realmに画像のファイル名(```filename```)を保存する
+        let photo = Pin()
+        photo.image = filename
+
+        //Realmからの呼び込み
+        //1.Realmから保存した画像のファイル名をとってくる
+        //ここは自分で頑張ってみて！変数```newfilename```を新しくつくってそこに保存しよう！
+
+        //2.documentDirectoryから画像を読み込む
+        //let newImage = UIImage.getFromDocuments(filename: newfilename)
+        //imageView.image = newImage
+
         
         self.dismiss(animated: true)
         
     }
     
-    //保存するためのパスを作成する
-        func createLocalDataFile() {
-        // 作成するテキストファイルの名前
-        let fileName = "\(NSUUID().uuidString).png"
 
-        // DocumentディレクトリのfileURLを取得
-        if documentDirectoryFileURL != nil {
-            // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
-            let path = documentDirectoryFileURL.appendingPathComponent(fileName)
-            documentDirectoryFileURL = path
-        }
-            
-    }
         
 
     
 
 
-//realm呼び出してる
+    //realm呼び出してる
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
 
