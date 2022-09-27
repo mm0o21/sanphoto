@@ -128,12 +128,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pug-gray-128" translatesAutoresizingMaskIntoConstraints="NO" id="rWe-CZ-BHF">
-                                <rect key="frame" x="243" y="152" width="51" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="golden-gray-128" translatesAutoresizingMaskIntoConstraints="NO" id="bqp-GT-q2i">
                                 <rect key="frame" x="319" y="148" width="51" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pug-gray-128" translatesAutoresizingMaskIntoConstraints="NO" id="rWe-CZ-BHF">
+                                <rect key="frame" x="243" y="150" width="51" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -145,6 +145,7 @@
                         <outlet property="dateField" destination="e5e-VT-wgp" id="8bz-Er-wD2"/>
                         <outlet property="dog1Button" destination="999-jf-dHj" id="NcN-WW-hcf"/>
                         <outlet property="dog2Button" destination="DC0-lg-e0R" id="Xgu-3q-yYz"/>
+                        <outlet property="imageView" destination="rWe-CZ-BHF" id="0Zg-i6-0bT"/>
                         <outlet property="updateButton" destination="2ey-lV-eMf" id="gQW-wK-Xff"/>
                     </connections>
                 </viewController>
