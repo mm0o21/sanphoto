@@ -24,22 +24,17 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     var adr: String!
     
     let realm = try! Realm()
-    
     // ドキュメントディレクトリの「ファイルURL」（URL型）定義
-        var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
-        // ドキュメントディレクトリの「パス」（String型）定義
-        let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-       
+    // ドキュメントディレクトリの「パス」（String型）定義
+    let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     
-       let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         //日付のやつ関連
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -91,21 +86,24 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     
     
     @IBAction func update(){
-
+        
+        createLocalDataFile()
         
         //Realmのテーブルをインスタンス化
-                let table = Pin()
-                do{
-                    try table.imageURL = documentDirectoryFileURL.absoluteString
-                }catch{
-                    print("画像の保存に失敗しました")
-                }
-                try! realm.write{realm.add(table)}
+        let table = Pin()
+        do{
+            try table.imageURL = documentDirectoryFileURL.absoluteString
+        }catch{
+            print("画像の保存に失敗しました")
+        }
+        try! realm.write{realm.add(table)}
+        
+        self.dismiss(animated: true)
         
     }
     
     //保存するためのパスを作成する
-    func createLocalDataFile() {
+        func createLocalDataFile() {
         // 作成するテキストファイルの名前
         let fileName = "\(NSUUID().uuidString).png"
 
@@ -115,22 +113,14 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
             let path = documentDirectoryFileURL.appendingPathComponent(fileName)
             documentDirectoryFileURL = path
         }
+            
     }
+        
+
     
-    //画像を保存
-    func saveImage() {
-        createLocalDataFile()
-        //保存
-        let ImageData = dog1Button.image(for: .normal)
-        do {
-            try ImageData?.saveToDocuments(filename: filePath)
-        } catch {
-            //エラー処理
-            print("エラー")
-        }
-    }
-    
-    
+
+
+//realm呼び出してる
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
 
@@ -149,6 +139,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         }
 
 }
+
 
 extension UIImage {
     func saveToDocuments(filename:String){
