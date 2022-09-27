@@ -16,8 +16,8 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     @IBOutlet var dog2Button: UIButton!
     @IBOutlet var dateField: UITextField!
     @IBOutlet var updateButton: UIButton!
-    //let imageView = UIImageView?(<#UIImageView#>)
-//    let imageView2 = UIImageView?(<#UIImageView#>)
+    @IBOutlet var imageView: UIImageView!
+    
     let dog1 = UIImage(named: "dog1")!
     let dog2 = UIImage(named: "dog2")!
     var datePicker = UIDatePicker()
@@ -100,9 +100,9 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
 
         //Realmからの呼び込み
         //1.Realmから保存した画像のファイル名をとってくる
+        let result = realm.objects(Pin.self).value(forKey: "image")
         //変数```newfilename```を新しくつくってそこに保存
-        let newfilename = realm.objects(Pin.self).value(forKey: "image")
-        //
+        //let newfilename =
         try! realm.write {
                 realm.add(newfilename, update:.modified)
         }
