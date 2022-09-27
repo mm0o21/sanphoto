@@ -117,7 +117,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 pins.address = adr
             //Realmに書き込み
                 try! realm.write {
-                    realm.add(pins, update:.modified)
+                        realm.add(pins, update:.modified)
                 }
     }
    
