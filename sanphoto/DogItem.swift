@@ -14,7 +14,7 @@ class Pin: Object {
     //経度
     @objc dynamic var longitude = ""
     //犬の画像
-    @objc dynamic var imageURL = ""
+    @objc dynamic var image = ""
     //住所
     @objc dynamic var address = ""
     
