@@ -64,7 +64,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
-        let data: Pin? = read()
+        let _: Pin? = read()
         
     }
     
@@ -142,21 +142,21 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
             super.viewWillAppear(animated)
 
-            adrLabel.text = adr
+            //adrLabel.text = adr
 
-            DispatchQueue(label: "background").async {
                 let realm = try! Realm()
+        
+                if let pin = realm.object(ofType: Pin.self, forPrimaryKey: 1) {
+                    self.dateField.text = pin.date
+                    self.adrLabel.text = pin.address
+                }
 
                 if realm.objects(Pin.self).last != nil {
-                    DispatchQueue.main.async {
-                        self.adrLabel.text = self.adr
-                        self.dateField.text = self.date
-                        print("ここだよーーーーー", self.adr, self.date)
-                    }
+                    self.adrLabel.text = self.adr
+                    self.dateField.text = self.date
+                    print("ここだよーーーーー", self.adr, self.date)
                 }
             }
-
-        }
 
 }
 
