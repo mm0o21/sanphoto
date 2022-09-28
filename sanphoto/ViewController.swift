@@ -25,16 +25,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var adr: String!
     
     //座標の配列
-    var coordinatesArray = [
-        ["name":"東京駅",    "lat":35.68124,  "lon": 139.76672]
-    ]
+    var coordinatesArray = [["name":"東京駅",    "lat":35.68124,  "lon": 139.76672]]
     
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        adr = adrLabel.text
         
         //locationManagerのセットアップ
         locationManager = CLLocationManager()
@@ -80,11 +76,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let lati:String = center.latitude.description
         let long:String = center.longitude.description
         
-        savePin(latitude: lati, longitude: long)
+        //savePin(latitude: lati, longitude: long)
         self.performSegue(withIdentifier: "next", sender: nil)
         
-        //realmstudioみたい
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         let coordinates = mapView.userLocation.coordinate
         let locations = CLLocation(latitude:coordinates.latitude, longitude: coordinates.longitude)
@@ -111,6 +105,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 let realm = try! Realm()
             //保存する要素
                 let pins = Pin()
+                adr = adrLabel.text
                 pins.address = adr
             //Realmに書き込み
                 try! realm.write {
@@ -219,7 +214,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         pin.latitude = latitude
         pin.longitude = longitude
         
-        let realm = try! Realm()
+        CLGeocoder().reverseGeocodeLocation(locationManager.location!) { placemarks, error in
+                    guard
+                        let placemark = placemarks?.first, error == nil,
+                        let administrativeArea = placemark.administrativeArea, //都道府県
+                        let locality = placemark.locality, //市区町村
+                        let thoroughfare = placemark.thoroughfare, //丁目
+                        let subThoroughfare = placemark.subThoroughfare //番地
+
+                        else {
+                        //self.adrLabel.text = "---"
+                            return
+                    }
+            pin.address = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+//                    self.adrLabel.text = """
+//                        \(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)
+//                    """
+                }
+        
+
         try! realm.write {
             realm.add(pin)
         }
@@ -241,7 +254,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func getAnnotations() -> [MKPointAnnotation]  {
        let pins = getAllPins()
        var results:[MKPointAnnotation] = []
-       
+
        pins.forEach { pin in
            let annotation = MKPointAnnotation()
            let centerCoordinate = CLLocationCoordinate2D(latitude: (pin.latitude as NSString).doubleValue, longitude:(pin.longitude as NSString).doubleValue)
@@ -250,11 +263,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
        }
        return results
     }
-    
+
     // マップのロードが終わった時に呼ばれる
     // Map上にAnnotationを追加
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-       // TODO: Pinを取得してMap上に表示する
+       //Pinを取得してMap上に表示する
        let annotations = getAnnotations()
        annotations.forEach { annotation in
            mapView.addAnnotation(annotation)
