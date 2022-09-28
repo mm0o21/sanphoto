@@ -117,7 +117,7 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="ピンを更新">
+                                <buttonConfiguration key="configuration" style="gray" title="ピンを追加">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="22"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -174,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kev-rx-ED6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="492.75362318840581" y="-96.428571428571431"/>
+            <point key="canvasLocation" x="472" y="-216"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sDk-t7-9wu">
