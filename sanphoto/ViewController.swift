@@ -25,7 +25,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var adr: String!
     
     //座標の配列
-    var coordinatesArray = [["name":"東京駅",    "lat":35.68124,  "lon": 139.76672]]
+    var coordinatesArray = [["name":"",    "lat":35.68124,  "lon": 139.76672]]
     
 
 
