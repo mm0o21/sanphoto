@@ -19,7 +19,7 @@ class Pin: Object {
     @objc dynamic var address = ""
     //日付
     @objc dynamic var date = ""
-    @objc dynamic var id: Int = 0
+    @objc dynamic var id = 0
     
     override static func primaryKey() -> String? {
         return "id"
