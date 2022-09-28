@@ -16,14 +16,19 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     @IBOutlet var dog2Button: UIButton!
     @IBOutlet var dateField: UITextField!
     @IBOutlet var updateButton: UIButton!
-    @IBOutlet var imageView: UIImageView!
+    //@IBOutlet var imageView: UIImageView!
+   // @IBOutlet var image2View: UIImageView!
     
-    let dog1 = UIImage(named: "dog1")!
-    let dog2 = UIImage(named: "dog2")!
+//    let dog1 = UIImage(named: "dog1")!
+//    let dog2 = UIImage(named: "dog2")!
+//    let dog1Gray = UIImage(named: "pug-gray-128")!
+//    let dog2Gray = UIImage(named: "golden-gray-128")
     var datePicker = UIDatePicker()
     var adr: String!
+    var date: String!
     
     let realm = try! Realm()
+    
     // ドキュメントディレクトリの「ファイルURL」（URL型）定義
     var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
@@ -59,18 +64,21 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
+        let data: Pin? = read()
+        
     }
     
+    func read() -> Pin?{
+        return realm.objects(Pin.self).first
+    }
     
     @IBAction func tapDog1(){
-        //dog1Button.setImage(dog1, for: .normal)
         dog1Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
         dog2Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
     }
     
     
     @IBAction func tapDog2(){
-        dog2Button.setImage(dog2, for: .normal)
         dog1Button.layer.backgroundColor = UIColor(hex: "ffffff",alpha: 1.0).cgColor
         dog2Button.layer.backgroundColor = UIColor(hex: "dcdcdc",alpha: 1.0).cgColor
     }
@@ -86,30 +94,43 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     
     
     @IBAction func update(){
-        //Realmに保存
-        //1.realmに保存する画像を用意
-        let image = UIImage(named: "dog1")!
-        //2.画像のファイル名を生成
-        let filename = UUID.init().uuidString + ".jpg"
-        //3.画像をdocumentDirectoryに保存
-        image.saveToDocuments(filename: filename)
         
-        //4.realmに画像のファイル名(```filename```)を保存する
-        let photo = Pin()
-        photo.image = filename
-
-        //Realmからの呼び込み
-        //1.Realmから保存した画像のファイル名をとってくる
-        let result = realm.objects(Pin.self).value(forKey: "image")
-        //変数```newfilename```を新しくつくってそこに保存
-        //let newfilename =
-        try! realm.write {
-                realm.add(newfilename, update:.modified)
+//                //realmクラスのインスタンスを作成
+//                let realm = try! Realm()
+//                //realmstudioみたい
+//                print(Realm.Configuration.defaultConfiguration.fileURL!)
+//                //保存するUIImageを設定
+//                let image = UIImage(named: "dog1")!
+//                //ファイル名を指定
+//                let filename = UUID.init().uuidString + ".jpg"
+//                //documentのパスを取得
+//                let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//                //documentのパスとファイル名を取得
+//                let path = directoryURL.appendingPathExtension(filename)
+//                //URL String
+//                let pathString = path.path
+//                //jpeg
+//                try! image.jpegData(compressionQuality: 100)?.write(to:URL(fileURLWithPath: pathString))
+//                //Pinクラスのインスタンスを生成
+//                let photo = Pin()
+//                //インスタンスののimageカラムに画像のパスを代入
+//                photo.image = path.absoluteString
+//
+//        if let last = realm.objects(Pin.self).sorted(byKeyPath: "id",ascending: true).last{
+//            photo.id = last.id + 1
+//            try! realm.write{
+//                realm.add(photo)
+//            }
+//        }
+        
+        //let realm = try! Realm()
+        let diary = Pin()
+        if let dates = dateField.text{
+            diary.date = dates
         }
-
-        //2.documentDirectoryから画像を読み込む
-        let newImage = UIImage.getFromDocuments(filename: newfilename)
-        imageView.image = newImage
+        try! realm.write {
+            realm.add(diary, update:.modified) // Realmに追加
+           }
 
         
         self.dismiss(animated: true)
@@ -118,6 +139,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
 
     //realm呼び出してる
     override func viewWillAppear(_ animated: Bool) {
+        presentingViewController?.beginAppearanceTransition(false, animated: animated)
             super.viewWillAppear(animated)
 
             adrLabel.text = adr
@@ -128,6 +150,8 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
                 if realm.objects(Pin.self).last != nil {
                     DispatchQueue.main.async {
                         self.adrLabel.text = self.adr
+                        self.dateField.text = self.date
+                        print("ここだよーーーーー", self.adr, self.date)
                     }
                 }
             }
