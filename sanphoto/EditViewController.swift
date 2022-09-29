@@ -141,6 +141,8 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     override func viewWillAppear(_ animated: Bool) {
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
             super.viewWillAppear(animated)
+        self.adrLabel.text = adr
+        print("わーーーー", adr)
 
             //adrLabel.text = adr
 
@@ -154,7 +156,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
                 if realm.objects(Pin.self).last != nil {
                     self.adrLabel.text = self.adr
                     self.dateField.text = self.date
-                    print("ここだよーーーーー", self.adr, self.date)
+                    //print("ここだよーーーーー", self.adr, self.date)
                 }
             }
 
