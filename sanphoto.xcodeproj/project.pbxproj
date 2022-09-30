@@ -313,8 +313,9 @@
 				DEVELOPMENT_TEAM = BVKH37RSY4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sanphoto/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "使うよ";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "使うよ";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "ナワバリを記録するために使用します。";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "ナワバリを記録するために使用します。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ナワバリを記録するために使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -324,7 +325,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = app.furuya.chosu.sanporoku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -343,8 +344,9 @@
 				DEVELOPMENT_TEAM = BVKH37RSY4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sanphoto/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "使うよ";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "使うよ";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "ナワバリを記録するために使用します。";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "ナワバリを記録するために使用します。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ナワバリを記録するために使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -354,7 +356,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = app.furuya.chosu.sanporoku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

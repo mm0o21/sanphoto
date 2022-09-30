@@ -26,6 +26,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     var datePicker = UIDatePicker()
     var adr: String!
     var date: String!
+    var p: Pin!
     
     let realm = try! Realm()
     
@@ -53,7 +54,9 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         dateField.inputAccessoryView = toolbar
         
         dateField.delegate = self
+        dateField.text = p.date
         
+        //print("αwーーーーー", p.date)
         adrLabel.layer.cornerRadius = 10
         adrLabel.clipsToBounds = true
         dog1Button.layer.cornerRadius = 10
@@ -67,6 +70,7 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
         let _: Pin? = read()
         
     }
+
     
     func read() -> Pin?{
         return realm.objects(Pin.self).first
@@ -88,42 +92,14 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     @objc func done() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy年M月d日"
-        dateField.text = formatter.string(from: datePicker.date)
+        //dateField.text = formatter.string(from: datePicker.date)
+        date = dateField.text
         self.view.endEditing(true)
     }
     
     
     @IBAction func update(){
         
-//                //realmクラスのインスタンスを作成
-//                let realm = try! Realm()
-//                //realmstudioみたい
-//                print(Realm.Configuration.defaultConfiguration.fileURL!)
-//                //保存するUIImageを設定
-//                let image = UIImage(named: "dog1")!
-//                //ファイル名を指定
-//                let filename = UUID.init().uuidString + ".jpg"
-//                //documentのパスを取得
-//                let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//                //documentのパスとファイル名を取得
-//                let path = directoryURL.appendingPathExtension(filename)
-//                //URL String
-//                let pathString = path.path
-//                //jpeg
-//                try! image.jpegData(compressionQuality: 100)?.write(to:URL(fileURLWithPath: pathString))
-//                //Pinクラスのインスタンスを生成
-//                let photo = Pin()
-//                //インスタンスののimageカラムに画像のパスを代入
-//                photo.image = path.absoluteString
-//
-//        if let last = realm.objects(Pin.self).sorted(byKeyPath: "id",ascending: true).last{
-//            photo.id = last.id + 1
-//            try! realm.write{
-//                realm.add(photo)
-//            }
-//        }
-        
-        //let realm = try! Realm()
         let diary = Pin()
         if let dates = dateField.text{
             diary.date = dates
@@ -141,23 +117,8 @@ class EditViewController: UIViewController, UITextFieldDelegate , CLLocationMana
     override func viewWillAppear(_ animated: Bool) {
         presentingViewController?.beginAppearanceTransition(false, animated: animated)
             super.viewWillAppear(animated)
-        self.adrLabel.text = adr
-        print("わーーーー", adr)
-
-            //adrLabel.text = adr
-
-                let realm = try! Realm()
+            self.adrLabel.text = adr
         
-                if let pin = realm.object(ofType: Pin.self, forPrimaryKey: 1) {
-                    self.dateField.text = pin.date
-                    self.adrLabel.text = pin.address
-                }
-
-                if realm.objects(Pin.self).last != nil {
-                    self.adrLabel.text = self.adr
-                    self.dateField.text = self.date
-                    //print("ここだよーーーーー", self.adr, self.date)
-                }
             }
 
 }
